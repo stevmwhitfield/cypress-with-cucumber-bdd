@@ -48,3 +48,23 @@ When(
         cy.get('[name="message"]').type(word + " " + number);
     }
 );
+
+When(
+    "I type a first name {word} and a last name {string}",
+    (firstName, lastName) => {
+        cy.get('[name="first_name"]').type(firstName);
+        cy.get('[name="last_name"]').type(lastName);
+    }
+);
+
+When(
+    "I type an email address {string} and a comment {string}",
+    (email, comment) => {
+        cy.get('[name="email"]').type(email);
+        cy.get('[name="message"]').type(comment);
+    }
+);
+
+Then("I should see a {string} message", (message) => {
+    cy.get("h1, body").contains(message);
+});
