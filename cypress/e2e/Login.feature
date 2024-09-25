@@ -1,3 +1,4 @@
+@login @regression
 Feature: WebDriverUniversity - Login Page
 
     Background: Navigate to the Login Page
