@@ -25,3 +25,26 @@ When("I click on the submit button", () => {
 Then("I should see a thank you message", () => {
     cy.get("h1").contains("Thank You for your Message!");
 });
+
+Then("I should see an error message", () => {
+    cy.get("body").contains("Error");
+});
+
+When("I type a specific first name {string}", (firstName) => {
+    cy.get('[name="first_name"]').type(firstName);
+});
+
+When("I type a specific last name {string}", (lastName) => {
+    cy.get('[name="last_name"]').type(lastName);
+});
+
+When("I type a specific email address {string}", (email) => {
+    cy.get('[name="email"]').type(email);
+});
+
+When(
+    "I type a specific word {string} and number {int} in the comment field",
+    (word, number) => {
+        cy.get('[name="message"]').type(word + " " + number);
+    }
+);
