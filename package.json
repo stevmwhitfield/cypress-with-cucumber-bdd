@@ -2,6 +2,7 @@
   "name": "cypress-with-cucumber",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "cy:open": "cypress open"
   },
