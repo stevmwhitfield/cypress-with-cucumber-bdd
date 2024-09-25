@@ -4,7 +4,15 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "npx cypress run --headed"
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome --spec 'cypress/e2e/*.feature'",
+    "cy:run:headed:chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
+    "cy:feat:contact-us": "cypress run --spec 'cypress/e2e/Contact_Us.feature'",
+    "cy:tag:smoke": "cypress run -e TAGS=\"@smoke\"",
+    "cy:tag:regression": "cypress run -e TAGS=\"@regression and not @smoke\"",
+    "cy:tag:contact-us": "cypress run -e TAGS=\"@contact-us\"",
+    "cy:tag:login": "cypress run -e TAGS=\"@login\"",
+    "cy:tags:login-smoke": "cypress run -e TAGS=\"@login or @smoke\""
   },
   "keywords": [],
   "author": "",
