@@ -1,8 +1,12 @@
 /// <reference types="cypress" />
 
-import { Given, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Before } from "@badeball/cypress-cucumber-preprocessor";
 
 const url = "https://webdriveruniversity.com";
+
+Before(() => {
+    cy.log("executing steps for home page");
+});
 
 Given("I navigate to the home page", () => {
     cy.visit(url);

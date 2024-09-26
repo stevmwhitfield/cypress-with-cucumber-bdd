@@ -3,6 +3,7 @@ Feature: WebDriverUniversity - Login Page
 
     Background: Navigate to the Login Page
         Given I navigate to the home page
+        When I wait for 0 seconds
         When I click on the login portal
 
     Scenario Outline: Validate Login Form Submission
