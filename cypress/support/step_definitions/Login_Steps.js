@@ -1,15 +1,22 @@
 /// <reference types="cypress" />
 
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import Login_PO from "../page_objects/Login_PO";
+
+const loginPage = new Login_PO();
 
 let stub;
 
+Given("I navigate to the login page", () => {
+    loginPage.navigateToLoginPage();
+});
+
 When("I type a username {word}", (username) => {
-    cy.get("#text").type(username);
+    loginPage.typeUsername(username);
 });
 
 When("I type a password {word}", (password) => {
-    cy.get("#password").type(password);
+    loginPage.typePassword(password);
 });
 
 When("I click on the login button", () => {

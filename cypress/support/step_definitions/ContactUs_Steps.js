@@ -1,70 +1,73 @@
 /// <reference types="cypress" />
 
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import ContactUs_PO from "../page_objects/ContactUs_PO";
+
+const contactUsPage = new ContactUs_PO();
 
 When("I type a first name", () => {
-    cy.get('[name="first_name"]').type("John");
+    contactUsPage.typeFirstName("John");
 });
 
 When("I type a last name", () => {
-    cy.get('[name="last_name"]').type("Doe");
+    contactUsPage.typeLastName("Doe");
 });
 
 When("I type an email address", () => {
-    cy.get('[name="email"]').type("john.doe@example.com");
+    contactUsPage.typeEmail("john.doe@example.com");
 });
 
 When("I type a comment", () => {
-    cy.get('[name="message"]').type("Hello, this is a test message.");
+    contactUsPage.typeComment("Hello, this is a test message.");
 });
 
 When("I click on the submit button", () => {
-    cy.get('[type="submit"]').click();
+    contactUsPage.clickSubmit();
 });
 
 Then("I should see a thank you message", () => {
-    cy.get("h1").contains("Thank You for your Message!");
+    contactUsPage.validateSubmissionText("Thank You for your Message!");
 });
 
 Then("I should see an error message", () => {
-    cy.get("body").contains("Error");
+    contactUsPage.validateSubmissionText("Error");
 });
 
 When("I type a specific first name {string}", (firstName) => {
-    cy.get('[name="first_name"]').type(firstName);
+    contactUsPage.typeFirstName(firstName);
 });
 
 When("I type a specific last name {string}", (lastName) => {
-    cy.get('[name="last_name"]').type(lastName);
+    contactUsPage.typeLastName(lastName);
 });
 
 When("I type a specific email address {string}", (email) => {
-    cy.get('[name="email"]').type(email);
+    contactUsPage.typeEmail(email);
 });
 
 When(
     "I type a specific word {string} and number {int} in the comment field",
     (word, number) => {
-        cy.get('[name="message"]').type(word + " " + number);
+        contactUsPage.typeComment(word + " " + number);
     }
 );
 
 When(
     "I type a first name {word} and a last name {string}",
     (firstName, lastName) => {
-        cy.get('[name="first_name"]').type(firstName);
-        cy.get('[name="last_name"]').type(lastName);
+        contactUsPage.typeFirstName(firstName);
+        contactUsPage.typeLastName(lastName);
     }
 );
 
 When(
     "I type an email address {string} and a comment {string}",
     (email, comment) => {
-        cy.get('[name="email"]').type(email);
-        cy.get('[name="message"]').type(comment);
+        contactUsPage.typeEmail(email);
+        contactUsPage.typeComment(comment);
     }
 );
 
 Then("I should see a {string} message", (message) => {
-    cy.get("h1, body").contains(message);
+    contactUsPage.validateSubmissionText(message);
 });
